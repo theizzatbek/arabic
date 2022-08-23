@@ -135,10 +135,15 @@
     function getWord(array) {
         let word = ''
         array.forEach(function (value, index) {
-            let symbol = symbols[Math.floor(Math.random() * 4)]
+            let duplicateSymbols = symbols
+            let symbol = symbols[Math.floor(Math.random() * symbols.length)]
             if (symbol === 0x0652 && index === 0) {
                 symbol = 0x0618
             }
+            if (value === 'ا') {
+                symbol = symbols[0]
+            }
+
             word += value + String.fromCharCode(symbol)
         })
 
