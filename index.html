@@ -22,7 +22,7 @@
     }
 
     * {
-        font-size: 1.5em;
+        font-size: 2rem;
         font-family: arabic, serif;
     }
 
@@ -89,7 +89,7 @@
             for (let i = 0; i < 10; i++) {
                 let n = Math.floor(Math.random() * array.length)
                 let word = getWord(array[n]);
-                $('#words').append(`<div class="col-3 p-3 border">${word}</div>`);
+                $('#words').append(`<div class="col p-3 border">${word}</div>`);
             }
         })
 
