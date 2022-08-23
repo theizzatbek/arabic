@@ -22,27 +22,34 @@
     }
 
     * {
-        font-size: 2rem;
         font-family: arabic, serif;
     }
 
-    p {
+    [id^=btn-] {
+        font-size: 4em!important;
+        padding: 0.5em!important;
+    }
 
+    #words {
+        font-size: 3em!important;
+    }
+    button {
+        font-size: 3em!important;
     }
 </style>
 <body>
 <div>
-    <div id="letters" class="container mt-3 mb-3"></div>
+    <div id="letters" class="m-3"></div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end m-3">
-        <button onclick="unselect()" type="button" class="btn btn-danger">
+        <button onclick="unselect()" type="button" class="btn btn-danger btn-lg">
             Clear
         </button>
-        <button onclick="generate()" type="button" class="btn btn-primary">
+        <button onclick="generate()" type="button" class="btn btn-primary btn-lg">
             Generate words
         </button>
     </div>
 
-    <div class="container text-center">
+    <div class="m-3 text-center">
         <div id="words" class="row"></div>
     </div>
 </div>
@@ -60,6 +67,7 @@
 
     function unselect() {
         selectedLetters = [];
+        $('#words').empty();
         $('.btn-success').removeClass('btn-success').addClass('btn-light');
     }
 
