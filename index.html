@@ -135,7 +135,6 @@
     function getWord(array) {
         let word = ''
         array.forEach(function (value, index) {
-            let duplicateSymbols = symbols
             let symbol = symbols[Math.floor(Math.random() * symbols.length)]
             if (symbol === 0x0652 && index === 0) {
                 symbol = 0x0618
