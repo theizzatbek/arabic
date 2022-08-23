@@ -88,18 +88,19 @@
 
     function generate() {
         $('#words').empty();
+        let words = [];
         selectedLetters.forEach(function (_, index) {
             if (index > 5) {
                 return
             }
-            let array = printPermutations(selectedLetters, index + 1);
-
-            for (let i = 0; i < 10; i++) {
-                let n = Math.floor(Math.random() * array.length)
-                let word = getWord(array[n]);
-                $('#words').append(`<div class="col-6 p-3 border">${word}</div>`);
-            }
+            words.push(...printPermutations(selectedLetters, index + 1))
         })
+
+        for (let i = 0; i < 10; i++) {
+            let n = Math.floor(Math.random() * words.length)
+            let word = getWord(words[n]);
+            $('#words').append(`<div class="col-6 p-3 border">${word}</div>`);
+        }
 
     }
 
