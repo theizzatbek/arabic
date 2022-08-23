@@ -93,7 +93,7 @@
             if (index > 5) {
                 return
             }
-            words.push(...printPermutations(selectedLetters, index + 1))
+            words = words.concat(printPermutations(selectedLetters, index + 1))
         })
 
         for (let i = 0; i < 10; i++) {
@@ -109,6 +109,9 @@
         let combinations = [];
         let indices = [];
         let len = array.length;
+        if (array.length > 6) {
+            len = 6
+        }
 
         function run(level) {
             for (let i = 0; i < len; i++) {
