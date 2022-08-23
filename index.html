@@ -26,12 +26,12 @@
     }
 
     [id^=btn-] {
-        font-size: 4em!important;
+        font-size: 6em!important;
         padding: 0.5em!important;
     }
 
     #words {
-        font-size: 3em!important;
+        font-size: 6em!important;
     }
     button {
         font-size: 3em!important;
@@ -50,7 +50,7 @@
     </div>
 
     <div class="m-3 text-center">
-        <div id="words" class="row"></div>
+        <div id="words" class="row m-3"></div>
     </div>
 </div>
 </body>
@@ -97,7 +97,7 @@
             for (let i = 0; i < 10; i++) {
                 let n = Math.floor(Math.random() * array.length)
                 let word = getWord(array[n]);
-                $('#words').append(`<div class="col p-3 border">${word}</div>`);
+                $('#words').append(`<div class="col-6 p-3 border">${word}</div>`);
             }
         })
 
