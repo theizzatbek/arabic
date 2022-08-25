@@ -91,18 +91,42 @@
             if (index > 5) {
                 return
             }
-
+            let words = printPermutations(selectedLetters, index + 1)
             for (let i = 0; i < (index + 1) * 2; i++) {
-                let word = generateWord(index + 1)
+                let n = Math.floor(Math.random() * words.length)
+                let word = getWord(words[n]);
                 $('#words').append(`<div class="col-12 p-3 border">${word}</div>`);
             }
 
         })
     }
 
-    function generateWord(len) {
-        let randPassword = Array(len).fill(selectedLetters).map(function(x) { return x[Math.floor(Math.random() * x.length)] });
-        return getWord(randPassword);
+    function printPermutations(array, k) {
+        let words = [];
+        let combinations = [];
+        let indices = [];
+        let len = array.length;
+        if (array.length > 6) {
+            len = 6
+        }
+
+        function run(level) {
+            for (let i = 0; i < len; i++) {
+                if (!indices[i]) {
+                    indices[i] = true;
+                    combinations[level] = array[i];
+                    if (level < k - 1) {
+                        run(level + 1, i + 1);
+                    } else {
+                        words.push(([]).concat(combinations));
+                    }
+                    indices[i] = false;
+                }
+            }
+        }
+
+        run(0);
+        return words;
     }
 
     function getWord(array) {
