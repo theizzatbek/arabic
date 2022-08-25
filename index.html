@@ -88,21 +88,25 @@
 
     function generate() {
         $('#words').empty();
-        let words = [];
+        //let words = [];
         selectedLetters.forEach(function (_, index) {
             if (index > 5) {
                 return
             }
-            words = printPermutations(selectedLetters, index + 1)
+            //words = printPermutations(selectedLetters, index + 1)
             for (let i = 0; i < 2; i++) {
-                let n = Math.floor(Math.random() * words.length)
-                let word = getWord(words[n]);
+                //let n = Math.floor(Math.random() * words.length)
+                let word = generateWord(index + 1)//getWord(words[n]);
                 $('#words').append(`<div class="col-12 p-3 border">${word}</div>`);
             }
 
         })
     }
 
+    function generateWord(len) {
+        let randPassword = Array(len).fill(selectedLetters).map(function(x) { return x[Math.floor(Math.random() * x.length)] });
+        return getWord(randPassword);
+    }
     function printPermutations(array, k) {
         let words = [];
         let combinations = [];
