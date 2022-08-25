@@ -93,15 +93,14 @@
             if (index > 5) {
                 return
             }
-            words = words.concat(printPermutations(selectedLetters, index + 1))
+            words = printPermutations(selectedLetters, index + 1)
+            for (let i = 0; i < 2; i++) {
+                let n = Math.floor(Math.random() * words.length)
+                let word = getWord(words[n]);
+                $('#words').append(`<div class="col-12 p-3 border">${word}</div>`);
+            }
+
         })
-
-        for (let i = 0; i < 10; i++) {
-            let n = Math.floor(Math.random() * words.length)
-            let word = getWord(words[n]);
-            $('#words').append(`<div class="col-6 p-3 border">${word}</div>`);
-        }
-
     }
 
     function printPermutations(array, k) {
@@ -134,15 +133,14 @@
 
     function getWord(array) {
         let word = ''
+        let lastSymbol = 0x0
         array.forEach(function (value, index) {
             let symbol = symbols[Math.floor(Math.random() * symbols.length)]
-            if (symbol === 0x0652 && index === 0) {
+            if ((symbol === 0x0652 && index === 0) || lastSymbol === 0x0652) {
                 symbol = 0x0618
             }
-            if (value === 'ا') {
-                symbol = symbols[0]
-            }
 
+            lastSymbol = symbol
             word += value + String.fromCharCode(symbol)
         })
 
