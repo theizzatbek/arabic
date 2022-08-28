@@ -88,13 +88,13 @@
     function generate() {
         $('#words').empty();
         selectedLetters.forEach(function (_, index) {
-            if (index >= 3) {
+            if (index >= 5) {
                 return
             }
             let words = printPermutations(selectedLetters, index + 1)
-            for (let i = 0; i < words.length; i++) {
-                //let n = Math.floor(Math.random() * words.length)
-                let word = getWord(words[i]);
+            for (let i = 0; i < 4; i++) {
+                let n = Math.floor(Math.random() * words.length)
+                let word = getWord(words[n]);
                 $('#words').append(`<div class="col-12 p-3 border">${word}</div>`);
             }
 
